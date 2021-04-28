@@ -199,9 +199,8 @@ print([w.strip(',') for w in ['these,', 'words,,', 'mostly', 'have, commas,']])
 sentence = "Handsome is better than ugly"
 print(["".join(sorted(word, key=lambda x: x.lower())) for word in sentence.split()])
 
-from random import  randrange
-print(randrange(1, 7) for _ in range)
+
 
 # Conditional List Comprehensions.
-
+print([x for x in range(10) if x % 2 == 0])
 
