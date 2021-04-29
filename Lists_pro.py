@@ -204,3 +204,125 @@ print(["".join(sorted(word, key=lambda x: x.lower())) for word in sentence.split
 # Conditional List Comprehensions.
 print([x for x in range(10) if x % 2 == 0])
 
+even_numbers = []
+for x in range(10):
+    if x % 2 == 0:
+        even_numbers.append(x)
+        print(even_numbers)
+numbers = []
+for x in range(10):
+    if x % 2 == 0:
+        temp = x
+    else:
+        temp = -1
+    numbers.append(2 * temp + 1)
+print(numbers)
+
+# Merging Dictionary.
+dict1 = {'w': 1, 'x': 1}
+dict2 = {'x': 2, 'y': 2, 'z': 2}
+print({k: v for d in [dict1, dict2] for k, v in d.items()})
+
+# Comprehension with NEsted Loops.
+data = [[1, 2], [3, 4], [5, 6]]
+output = []
+for each_list in data:
+    for element in each_list:
+        output.append(element)
+        break
+print(output)
+
+
+# Generator Expressions.
+
+for i in (x**2 for x in range(10)):
+    print(i)
+
+# Setting Comprehensions.
+text = "when in the Course of human event it becomes necessary for one people...."
+print({ch.lower() for ch in text if ch.isalpha()})
+
+
+# Refactoring filter and map to list comprehension.
+# map & Filter
+filtered = filter(lambda x: x % 2 == 0, range(10))
+results = map(lambda x: 2*x, filtered)
+
+# List comprehension
+results = [2*x for x in range(10) if x % 2 == 0]
+
+print(results)
+
+# Comprehensions involving tuples.
+print([x + y for x, y in [(1, 2), (3, 4), (5, 6)]])
+
+for x, y in [(1, 2), (3, 4), (5, 6)]:
+    print(x+y)
+
+# Counting Occurrences Using Comprehension.
+"""Count the numbers in range(1000) 
+       that are even and contain the digit '9' """
+print(sum(
+    1 for x in range(1000)
+    if x % 2 == 0 and
+    '9' in str(x)
+))
+
+# Changing the Types in a list.
+# Convert a list of strings into an integer.
+items = ["1","2","3","4"]
+print([int(item) for item in items])
+
+# Convert a list of strings to float.
+items = ["1","2","3","4"]
+print(map(float, items))
+
+# Nested List Comprehensions.
+# List comprehension with nested loop.
+print([x+y for x in [1, 2, 3] for y in [3, 4, 5]])
+# Nested List Comprehension.
+print([[x + y for x in [1, 2, 3]] for y in [3, 4, 5]])
+
+matric = [[1, 2, 3],
+          [4, 5, 6],
+          [7, 8, 9]]
+print([[row[i] for row in matric] for i in range(len(matric))])
+
+# Iteration two or more list simultaneously within list comprehension.
+list1 = [1, 2, 3, 4]
+list2 = ['a', 'b', 'c', 'd']
+list3 = ['6', '7', '8', '9']
+print([(i, j) for i, j in zip(list1, list2)])\
+
+print([(i, j, k) for i, j, k in zip(list1, list2, list3)])
+
+# List Slicing (Selecting parts of the list).
+lst = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
+print(lst[::2])
+print(lst[::3])
+
+
+# Selecting a sublist from a list.
+print(lst[2:4])
+print(lst[2:])
+print(lst[:4])
+
+# Reversing a list with slicing.
+b = lst[::-1]
+print(b)
+
+# Shifting a list using slicing.
+def shift_list(array, s):
+    s %=len(array) # To calculate the actual shift amount.
+    S *= -1 # Reverse the shift direction.
+    shifted_array = array[s:] + array[:s]
+    return shifted_array
+my_array = [1, 2, 3, 4, 5]
+shift_list(my_array, -7) # negative number
+shift_list(my_array, 5) # no shift on number to the six=ze of the array
+shift_list(my_array, 3)
+
+
+
+
+# Groupby().
