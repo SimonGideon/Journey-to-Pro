@@ -199,8 +199,6 @@ print([w.strip(',') for w in ['these,', 'words,,', 'mostly', 'have, commas,']])
 sentence = "Handsome is better than ugly"
 print(["".join(sorted(word, key=lambda x: x.lower())) for word in sentence.split()])
 
-
-
 # Conditional List Comprehensions.
 print([x for x in range(10) if x % 2 == 0])
 
@@ -232,24 +230,22 @@ for each_list in data:
         break
 print(output)
 
-
 # Generator Expressions.
 
-for i in (x**2 for x in range(10)):
+for i in (x ** 2 for x in range(10)):
     print(i)
 
 # Setting Comprehensions.
 text = "when in the Course of human event it becomes necessary for one people...."
 print({ch.lower() for ch in text if ch.isalpha()})
 
-
 # Refactoring filter and map to list comprehension.
 # map & Filter
 filtered = filter(lambda x: x % 2 == 0, range(10))
-results = map(lambda x: 2*x, filtered)
+results = map(lambda x: 2 * x, filtered)
 
 # List comprehension
-results = [2*x for x in range(10) if x % 2 == 0]
+results = [2 * x for x in range(10) if x % 2 == 0]
 
 print(results)
 
@@ -257,7 +253,7 @@ print(results)
 print([x + y for x, y in [(1, 2), (3, 4), (5, 6)]])
 
 for x, y in [(1, 2), (3, 4), (5, 6)]:
-    print(x+y)
+    print(x + y)
 
 # Counting Occurrences Using Comprehension.
 """Count the numbers in range(1000) 
@@ -270,16 +266,16 @@ print(sum(
 
 # Changing the Types in a list.
 # Convert a list of strings into an integer.
-items = ["1","2","3","4"]
+items = ["1", "2", "3", "4"]
 print([int(item) for item in items])
 
 # Convert a list of strings to float.
-items = ["1","2","3","4"]
+items = ["1", "2", "3", "4"]
 print(map(float, items))
 
 # Nested List Comprehensions.
 # List comprehension with nested loop.
-print([x+y for x in [1, 2, 3] for y in [3, 4, 5]])
+print([x + y for x in [1, 2, 3] for y in [3, 4, 5]])
 # Nested List Comprehension.
 print([[x + y for x in [1, 2, 3]] for y in [3, 4, 5]])
 
@@ -292,15 +288,13 @@ print([[row[i] for row in matric] for i in range(len(matric))])
 list1 = [1, 2, 3, 4]
 list2 = ['a', 'b', 'c', 'd']
 list3 = ['6', '7', '8', '9']
-print([(i, j) for i, j in zip(list1, list2)])\
-
-print([(i, j, k) for i, j, k in zip(list1, list2, list3)])
+print([(i, j) for i, j in zip(list1, list2)])
+[(i, j, k) for i, j, k in zip(list1, list2, list3)]
 
 # List Slicing (Selecting parts of the list).
 lst = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
 print(lst[::2])
 print(lst[::3])
-
 
 # Selecting a sublist from a list.
 print(lst[2:4])
@@ -312,7 +306,7 @@ b = lst[::-1]
 print(b)
 
 # Shifting a list using slicing.
-def shift_list(array, s):
+"""def shift_list(array, s):
     s %=len(array) # To calculate the actual shift amount.
     S *= -1 # Reverse the shift direction.
     shifted_array = array[s:] + array[:s]
@@ -320,9 +314,181 @@ def shift_list(array, s):
 my_array = [1, 2, 3, 4, 5]
 shift_list(my_array, -7) # negative number
 shift_list(my_array, 5) # no shift on number to the six=ze of the array
-shift_list(my_array, 3)
-
-
-
+shift_list(my_array, 3)"""
 
 # Groupby().
+import itertools
+things = [("animal", "bear"), ("animal", "duck"), ("plant", "cactus"), ("vehicle", "harley"), ("vehicle", "speed boat"),
+          ("vehicle", "school bus")]
+dic = {}
+f = lambda x: x[0]
+for key, group in itertools.groupby(sorted(things, key=f), f):
+    # dic[key] = list(group)
+    dic
+list_things = ['goat', 'dog', 'donkey','mulato', 'cow', 'cat', ('persons', 'man', 'woman'), 'wombat', 'mangoose',
+               'maloo', 'camel']
+c = itertools.groupby(list_things, key=lambda x: x[0])
+dic = {}
+for k, v in c:
+    dic[k] = list(v)
+print(dic)
+
+
+# Linked lists.
+class Node:
+    def __init__(self, val):
+        self.data = val
+        self.next = None
+    def getData(self):
+        return self.data
+    def getNext(self):
+        return self.next
+    def setData(self):
+        self.data = val
+    def  LinkedList:
+        def __init__(self):
+            self.head = head = None
+    def isEmpty(self):
+        """Check if the list is empty"""
+        return self.head is None
+    def __add__(self, item):
+        """Add the item to the list"""
+        new_node = Node(item)
+        new_node.setNext(self.head)
+        self.head = new_node
+    def size(self):
+        """Return the length/size of the list"""
+        count = 0
+        current = self.head
+        while current is not None:
+            count += 1
+            current = current.getNext()
+        return count
+    def search(self, item):
+        """Search for item in list. If found, return True. If not found, return False"""
+        current = self.head
+        found = False
+        while current is not NOne and not found:
+            if current.getData() is item:
+                found = True
+            else:
+                current = current.getNext()
+                return found
+    def remove(self, item):
+        """Remove item from list. If is not found in list, raise ValueError"""
+        current = self.head
+        previous = None
+        found = False
+        while current is not None and not found:
+            if current.getData() is item:
+                found = True
+            else:
+                previous = current
+                current = current.getNext()
+            if found:
+                if previous is None:
+                    self.head = current.getNext()
+                else:
+                    previous.setNext(current.getNext())
+            else:
+                raise ValueError
+                print('Value not found')
+
+    def insert(self, position, item):
+        """
+        Insert item at position specified. If position specified is
+        out of bounds, raise IndexError
+        """
+
+    if position > self.size() - 1:
+        raise IndexError
+    print
+    "Index out of bounds."
+    current = self.head
+    previous = None
+    pos = 0
+    if position is 0:
+        self.add(item)
+    else:
+        new_node = Node(item)
+    while pos < position:
+        pos += 1
+    previous = current
+    current = current.getNext()
+    previous.setNext(new_node)
+    new_node.setNext(current)
+
+    def index(self, item):
+        """
+        Return the index where item is found.
+        If item is not found, return None.
+        """
+
+    current = self.head
+    pos = 0
+    found = False
+    while current is not None and not found:
+        if current.getData() is item:
+            found = True
+    else:
+        current = current.getNext()
+    pos += 1
+    if found:
+        pass
+    else:
+        pos = NoneGoalKicker.com – Python® Notes
+    for Professionals 151
+        return pos
+
+    def pop(self, position=None):
+        """
+        If no argument is provided, return and remove the item at the head.
+        If position is provided, return and remove the item at that position.
+        If index is out of bounds, raise IndexError
+        """
+
+    if position > self.size():
+        print
+        'Index out of bounds'
+    raise IndexError
+    current = self.head
+    if position is None:
+        ret = current.getData()
+    self.head = current.getNext()
+    else:
+    pos = 0
+    previous = None
+    while pos < position:
+        previous = current
+    current = current.getNext()
+    pos += 1
+    ret = current.getData()
+    previous.setNext(current.getNext())
+    print
+    ret
+    return ret
+
+    def append(self, item):
+    # Append item to the end of the list"""
+    current = self.head
+    previous = None
+    pos = 0
+    length = self.size()
+    while pos < length:
+        previous = current
+    current = current.getNext()
+    pos += 1
+    new_node = Node(item)
+    if previous is None:
+        new_node.setNext(current)
+    self.head = new_node
+    else:
+    previous.setNext(new_node)
+
+    def printList(self):
+        """Print the list"""
+
+    current = self.head
+    while current is not None:
+        print(current.getData())
+    current = current.getNext()
