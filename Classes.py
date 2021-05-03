@@ -86,3 +86,91 @@ alice = Person("Alice", "Henderson", 31)
 
 
 # Multiple Inheritance.
+class Foo(object):
+    def __init__(self):
+        print("foo init")
+class Bar(object):
+    def __init__(self):
+        print("bar init")
+class FooBar(Foo, Bar):
+    def __init__(self):
+        print("foobar init")
+        super(FooBar, self).__init__()
+a = FooBar()
+
+print(isinstance(a, FooBar))
+print(isinstance(a, Foo))
+
+
+# Properties.
+class Character(object):
+    def __init__(self, name, max_hp):
+        self.first_name = name
+        self._hp = max_hp
+        self._max_hp = max_hp
+        self._max_hp = max_hp
+    @property
+    def hp(self):
+        return self._hp
+    # Make name read by not only by not providing a set method.
+    @property
+    def name(self):
+        return self.name
+
+    def take_damage(self, damage):
+        self.hp -= damage
+        self.hp = 0 if self.hp <0 else self.hp
+    @property
+    def is_alive(self):
+        return self.hp < self.max_hp if self.hp > 0 else False
+    @property
+    def is_dead(self):
+        return not self.is_alive
+bibo = Character('Bilbo Baggins', 100)
+print(bibo.hp)
+
+# Default value for instance variables.
+class Rectangle2D(object):
+    def __init__(self, width, height, pos=[0,0], color='blue'):
+        self.width = width
+        self.height = height
+        self.pos = pos
+        self.color = color
+r1 = Rectangle2D(5,3)
+r2 = Rectangle2D(7, 8)
+r1.pos[0] = 4
+print(r1.pos)
+print(r2.pos)
+
+# Class and Instance variables.
+class c:
+    x = 2 # Class variable
+    def __init__(self, y):
+        self.y = y # Instance variable
+print(c.x)
+
+c1 = c(3)
+print(c1.x)
+c2 = c(4)
+print(c2.x)
+class D:
+    x = []
+    def __init__(self, item):
+        self.x.append(item) # note that this is not an assgnment!
+d1 = D(1)
+d2 = D(2)
+
+print(d1.x)
+print(d2.x)
+
+# Class compodition.
+class County(object):
+    def __init__(self):
+        self.cities=[]
+    def addCity(self, city):
+        self.cities.append(city)
+class City(object):
+    def __init__(self, numPeople):
+        self.people = []
+        self.numPeople
+
