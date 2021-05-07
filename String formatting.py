@@ -76,4 +76,30 @@ r, g, b = (1.0, 0.4, 0.0)
 print('#{:02X}{:02X}'.format(int(255 * r), int(255 * g), int(255 * b)))
 
 # Nested formating.
+print('{:.>10}'.format('foo'))
+print('{:.>{}}'.format('foo', 10))
+print('{:{}{}{}}'.format('foo', '*', '^', 15))
+data = ["a", "bbbbbbbb", "ccc"]
+m = max(map(len, data))
+for d in data:
+    print('{:>{}}'.format(d, m))
+# Format Using Getitem and Gettr.
+person = {'first': 'Arthur', 'last': 'Dent'}
+print('{p[first]} {p[last]}'.format(p=person))
+class Person(object):
+    first = 'Zaphod'
+    last = 'Beeeblebrox'
+print('{p.first} {p.last}'.format(p=Person()))
 
+class example(object):
+    def __init__(self,a,b,c):
+        self.a, self.b, self.c = a,b,c
+    def __format__(self, format_spec):
+        """Implement special semantics for the 's' format specifier"""
+    if format_spec(-1) != 's':
+        raise ValueError('{} format specifier not under for this object',
+format_spec[:-1])
+        raw = "(" + ",".join(str(self.a), str(self.b), str(self.c)) + ")"
+        return "{r:{f}}".format(r=raw, f=format_spec )
+inst = Example(1,2,3)
+print("{0:>20s".format(inst))
