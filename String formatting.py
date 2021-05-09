@@ -91,15 +91,3 @@ class Person(object):
     last = 'Beeeblebrox'
 print('{p.first} {p.last}'.format(p=Person()))
 
-class example(object):
-    def __init__(self,a,b,c):
-        self.a, self.b, self.c = a,b,c
-    def __format__(self, format_spec):
-        """Implement special semantics for the 's' format specifier"""
-    if format_spec(-1) != 's':
-        raise ValueError('{} format specifier not under for this object',
-format_spec[:-1])
-        raw = "(" + ",".join(str(self.a), str(self.b), str(self.c)) + ")"
-        return "{r:{f}}".format(r=raw, f=format_spec )
-inst = Example(1,2,3)
-print("{0:>20s".format(inst))
