@@ -1,4 +1,5 @@
 import re
+
 pattern = r"123"
 string = "123zzb"
 re.match(pattern, string)
@@ -35,13 +36,14 @@ apples = rx.findall(string)
 print(apples)"""
 
 # Copying data.
-d1 = {1:[]}
+d1 = {1: []}
 d2 = d1.copy()
 print(d1 is d2)
 
 # Performing a shallow copy.
 import copy
-c = [[1,2]]
+
+c = [[1, 2]]
 d = copy.copy(c)
 print(c is d)
 
@@ -50,19 +52,35 @@ s1 = {()}
 s2 = s1.copy()
 print(s1 is s2)
 
+
 # Context Manager
 class AContextManager():
     def __enter__(self):
         print("Entered")
         return "A-instance"
+
+
 def __exit__(self, exc_type, exc_value, traceback):
     print("Exited" + (" (with an exception)" if exc_type else ""))
+
+
 # return True if you want to suppress the exception
 
 class MyContextManager:
     def __enter__(self):
         return self
+
+
 def __exit__(self):
     print('something')
 
-# Assigning to a target.
+
+# Mutiple context managers.
+with open(input_path) as input_file, open(output_path, 'w') as output_file:
+    # do something with both files.
+    for line in input_file:
+        output_file.write(line + '\n')
+with open(input_path) as input_file:
+    with open(output_path, 'w') as output_file:
+        for line in input_file:
+            output_file.write(line + '\n')
