@@ -102,6 +102,7 @@ finally:
     output.close()
 print(outfilename, 'contains', os.stat(outfilename).st_size, 'bytes of compressed data')
 os.system('file -b --mime %s' % outfilename)
+"""GZIP"""
 
 
 
