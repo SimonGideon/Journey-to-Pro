@@ -52,4 +52,10 @@ import pyglet
 
 audio = pyglet.media.load("audio.wav")
 audio.play()
-python -m pip install SomePackage
+# Enum
+from enum import Enum
+class Color(Enum):
+    red = 1
+    green = 2
+    blue = 3
+    print(Clor.red)
