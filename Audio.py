@@ -59,3 +59,6 @@ class Color(Enum):
     green = 2
     blue = 3
     print(Clor.red)
+    print(Color(1))
+    print(Color['red'])
+    
