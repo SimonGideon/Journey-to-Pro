@@ -34,24 +34,18 @@ def size(self):
     return len(self.items)
 
 
-# First App
-from kivy.app import App
-from kivy.uix.label import Label
-
-
-class Test(App):
-    def build(self):
-        return Label(text='Hello world')
-
-
-if __name__ == '__main__':
-    Test().run()
 
 # Audio with pyglet
+import winsound
+freq = 2500
+dur = 1000
+winsound.Beep(freq, dur)
 import pyglet
 
 audio = pyglet.media.load("audio.wav")
 audio.play()
+
+
 # Enum
 from enum import Enum
 class Color(Enum):
@@ -61,4 +55,4 @@ class Color(Enum):
     print(Clor.red)
     print(Color(1))
     print(Color['red'])
-    
+
